@@ -1,0 +1,65 @@
+<!--
+ *                   江城子 . 程序员之歌
+ * 
+ *               十年生死两茫茫，写程序，到天亮。
+ *                   千行代码，Bug何处藏。
+ *               纵使上线又怎样，朝令改，夕断肠。
+ * 
+ *               领导每天新想法，天天改，日日忙。
+ *                   相顾无言，惟有泪千行。
+ *               每晚灯火阑珊处，夜难寐，加班狂。
+ * 
+ * 
+ * @Author       : William
+ * @Date         : 2021-07-24 10:55:18
+ * @LastEditTime : 2021-07-24 15:46:41
+ * @LastEditors  : Do not edit
+ * @FilePath     : /vue_basic/01_初识VUE/初识vue.html
+ * @Description  : 初识vue
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>初识vue</title>
+    <!-- 引入VUE -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1.创建一个VUE实例，并传入一个配置对象 
+        2.root容器里的代码依然符合html规范，只不过混入一些特殊的vue语法
+        3.root容器里的代码被称为【vue模版】
+        4.vue实例和容器一一对应
+        5.真实开发中只有一个vue实例，并且配合着组件一起使用
+        6.{{XXX}}中的xxx要写js表达式，且xxx会自动读到data中的所有属性
+        7.一旦data中的数据发生改变，页面中用到该数据的地方会自动更新
+        
+        注意区分 js表达式和js代码（语句）
+            表达式：1个表达式会生成一个值，可以放在任何一个需要值的地方
+            js代码：if(){} for(){}  
+    -->
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>Hello, {{name}} {{address}} {{1+1}}</h1>
+        <h1>{{Date.now()}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止vue在启动时生成生产提示
+        // 创建vue实例
+        new Vue({
+            el: '#root',// el用于指定当前vue实例为哪个容器服务，值通常为css选择器字符串
+            // el: document.getElementById("root")
+            data: { // data中用于存储数据，数据供el所指定的容器去使用，值我们暂时先写成一个对象。
+                name: 'CIB',
+                address: "深圳"
+            }
+        })
+    </script>
+</body>
+
+</html>
