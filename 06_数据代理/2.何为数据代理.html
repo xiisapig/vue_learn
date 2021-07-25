@@ -1,0 +1,59 @@
+<!--
+ *                        _oo0oo_
+ *                       o8888888o
+ *                       88" . "88
+ *                       (| -_- |)
+ *                       0\  =  /0
+ *                     ___/`---'\___
+ *                   .' \\|     |// '.
+ *                  / \\|||  :  |||// \
+ *                 / _||||| -:- |||||- \
+ *                |   | \\\  - /// |   |
+ *                | \_|  ''\---/''  |_/ |
+ *                \  .-\__  '-'  ___/-. /
+ *              ___'. .'  /--.--\  `. .'___
+ *           ."" '<  `.___\_<|>_/___.' >' "".
+ *          | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ *          \  \ `_.   \_ __\ /__ _/   .-` /  /
+ *      =====`-.____`.___ \_____/___.-`___.-'=====
+ *                        `=---='
+ * 
+ * 
+ *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * 
+ *            佛祖保佑       永不宕机     永无BUG
+ * 
+ * @Author       : William
+ * @Date         : 2021-07-25 10:43:24
+ * @LastEditTime : 2021-07-25 10:45:42
+ * @LastEditors  : Do not edit
+ * @FilePath     : /vue_basic/06_数据代理/2.何为数据代理.html
+ * @Description  : 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据代理</title>
+</head>
+
+<body>
+    <!-- 数据代理：通过一个对象代理对另一个对象属性的操作（读/写） -->
+    <script>
+        let obj = { x: 100 }
+        let obj2 = { y: 200 }
+        Object.defineProperty(obj2, 'x', {
+            get() {
+                return obj.x
+            },
+            set(value) {
+                obj.x = value
+            }
+        })
+    </script>
+</body>
+
+</html>
