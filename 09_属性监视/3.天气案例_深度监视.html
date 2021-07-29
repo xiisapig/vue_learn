@@ -1,0 +1,76 @@
+<!--
+ *                   江城子 . 程序员之歌
+ * 
+ *               十年生死两茫茫，写程序，到天亮。
+ *                   千行代码，Bug何处藏。
+ *               纵使上线又怎样，朝令改，夕断肠。
+ * 
+ *               领导每天新想法，天天改，日日忙。
+ *                   相顾无言，惟有泪千行。
+ *               每晚灯火阑珊处，夜难寐，加班狂。
+ * 
+ * 
+ * @Author       : William
+ * @Date         : 2021-07-28 23:06:57
+ * @LastEditTime : 2021-07-30 00:13:51
+ * @LastEditors  : Do not edit
+ * @FilePath     : /vue_basic/09_属性监视/3.天气案例_深度监视.html
+ * @Description  : 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气案例</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h3>a的值:{{numbers.a}}</h3>
+        <button @click="numbers.a++">点击a+1</button>
+        <h3>b的值:{{numbers.b}}</h3>
+        <button @click="numbers.b++">点击b+1</button>
+        <button @click="numbers={a:66,b:88}">彻底替换a,b</button>
+    </div>
+
+</body>
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            numbers: {
+                a: 1,
+                b: 2,
+                c: {
+                    d: {
+                        e: 100
+                    }
+                }
+            }
+        },
+        watch: {
+            /*
+            'numbers.a': {
+                handler() {
+                    console.log("a改变了")
+                }
+            }*/
+            // 监视多级结构中所有属性的变化
+            numbers: {
+                deep: true,
+                handler() {
+                    console.log("numbers改变了")
+                }
+            }
+        }
+
+    })
+
+</script>
+
+</html>
