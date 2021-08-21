@@ -1,0 +1,118 @@
+<!--
+ *                        ::
+ *                       :;J7, :,                        ::;7:
+ *                       ,ivYi, ,                       ;LLLFS:
+ *                       :iv7Yi                       :7ri;j5PL
+ *                      ,:ivYLvr                    ,ivrrirrY2X,
+ *                      :;r@Wwz.7r:                :ivu@kexianli.
+ *                     :iL7::,:::iiirii:ii;::::,,irvF7rvvLujL7ur
+ *                    ri::,:,::i:iiiiiii:i:irrv177JX7rYXqZEkvv17
+ *                 ;i:, , ::::iirrririi:i:::iiir2XXvii;L8OGJr71i
+ *               :,, ,,:   ,::ir@mingyi.irii:i:::j1jri7ZBOS7ivv,
+ *                  ,::,    ::rv77iiiriii:iii:i::,rvLq@huhao.Li
+ *              ,,      ,, ,:ir7ir::,:::i;ir:::i:i::rSGGYri712:
+ *            :::  ,v7r:: ::rrv77:, ,, ,:i7rrii:::::, ir7ri7Lri
+ *           ,     2OBBOi,iiir;r::        ,irriiii::,, ,iv7Luur:
+ *         ,,     i78MBBi,:,:::,:,  :7FSL: ,iriii:::i::,,:rLqXv::
+ *         :      iuMMP: :,:::,:ii;2GY7OBB0viiii:i:iii:i:::iJqL;::
+ *        ,     ::::i   ,,,,, ::LuBBu BBBBBErii:i:i:i:i:i:i:r77ii
+ *       ,       :       , ,,:::rruBZ1MBBqi, :,,,:::,::::::iiriri:
+ *      ,               ,,,,::::i:  @arqiao.       ,:,, ,:::ii;i7:
+ *     :,       rjujLYLi   ,,:::::,:::::::::,,   ,:i,:,,,,,::i:iii
+ *     ::      BBBBBBBBB0,    ,,::: , ,:::::: ,      ,,,, ,,:::::::
+ *     i,  ,  ,8BMMBBBBBBi     ,,:,,     ,,, , ,   , , , :,::ii::i::
+ *     :      iZMOMOMBBM2::::::::::,,,,     ,,,,,,:,,,::::i:irr:i:::,
+ *     i   ,,:;u0MBMOG1L:::i::::::  ,,,::,   ,,, ::::::i:i:iirii:i:i:
+ *     :    ,iuUuuXUkFu7i:iii:i:::, :,:,: ::::::::i:i:::::iirr7iiri::
+ *     :     :rk@Yizero.i:::::, ,:ii:::::::i:::::i::,::::iirrriiiri::,
+ *      :      5BMBBBBBBSr:,::rv2kuii:::iii::,:i:,, , ,,:,:i@petermu.,
+ *           , :r50EZ8MBBBBGOBBBZP7::::i::,:::::,: :,:,::i;rrririiii::
+ *               :jujYY7LS0ujJL7r::,::i::,::::::::::::::iirirrrrrrr:ii:
+ *            ,:  :@kevensun.:,:,,,::::i:i:::::,,::::::iir;ii;7v77;ii;i,
+ *            ,,,     ,,:,::::::i:iiiii:i::::,, ::::iiiir@xingjief.r;7:i,
+ *         , , ,,,:,,::::::::iiiiiiiiii:,:,:::::::::iiir;ri7vL77rrirri::
+ *          :,, , ::::::::i:::i:::i:i::,,,,,:,::i:i:::iir;@Secbone.ii:::
+ * 
+ * @Author       : William
+ * @Date         : 2021-08-12 22:46:10
+ * @LastEditTime : 2021-08-20 22:55:01
+ * @LastEditors  : Do not edit
+ * @FilePath     : /vue_basic/12_列表渲染/3.列表过滤.html
+ * @Description  : 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表过滤</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h3>人员列表</h3>
+        <input type="text" placeholder="请输入名字" v-model="keyWord">
+        <ul>
+            <li v-for="(p, index) in filPersons" :key="p.id">
+                {{p.id}}-{{p.name}}-{{p.age}}-{{p.sex}}
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script>
+    Vue.config.productionTip = false
+    // 用watch实现
+    //#region
+    /*new Vue({
+        el: "#root",
+        data: {
+            keyWord: "",
+            persons: [
+                { id: '0001', name: "马冬梅", age: 18, sex: "女" },
+                { id: '0002', name: "周冬雨", age: 19, sex: "女" },
+                { id: '0003', name: "周杰伦", age: 29, sex: "男" },
+                { id: '0004', name: "温兆伦", age: 40, sex: "男" }
+            ],
+            filPersons: []
+        },
+        watch: {
+            keyWord: {
+                immediate: true,
+                handler(val) {
+                    this.filPersons = this.persons.filter((p) => {
+                        return p.name.indexOf(val) !== -1
+                    })
+                }
+            }
+        }
+    })*/
+    //#endregion
+    // 用computed实现
+    new Vue({
+        el: "#root",
+        data: {
+            keyWord: "",
+            persons: [
+                { id: '0001', name: "马冬梅", age: 18, sex: "女" },
+                { id: '0002', name: "周冬雨", age: 19, sex: "女" },
+                { id: '0003', name: "周杰伦", age: 29, sex: "男" },
+                { id: '0004', name: "温兆伦", age: 40, sex: "男" }
+            ]
+        },
+        computed: {
+            filPersons() {
+                return this.persons.filter((p) => {
+                    return p.name.indexOf(this.keyWord) !== -1
+                })
+            }
+        }
+    })
+
+
+</script>
+
+</html>

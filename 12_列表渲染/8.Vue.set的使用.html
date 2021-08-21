@@ -1,0 +1,108 @@
+<!--
+ *                                |~~~~~~~|
+ *                                |       |
+ *                                |       |
+ *                                |       |
+ *                                |       |
+ *                                |       |
+ *     |~.\\\_\~~~~~~~~~~~~~~xx~~~         ~~~~~~~~~~~~~~~~~~~~~/_//;~|
+ *     |  \  o \_         ,XXXXX),                         _..-~ o /  |
+ *     |    ~~\  ~-.     XXXXX`)))),                 _.--~~   .-~~~   |
+ *      ~~~~~~~`\   ~\~~~XXX' _/ ';))     |~~~~~~..-~     _.-~ ~~~~~~~
+ *               `\   ~~--`_\~\, ;;;\)__.---.~~~      _.-~
+ *                 ~-.       `:;;/;; \          _..-~~
+ *                    ~-._      `''        /-~-~
+ *                        `\              /  /
+ *                          |         ,   | |
+ *                           |  '        /  |
+ *                            \/;          |
+ *                             ;;          |
+ *                             `;   .       |
+ *                             |~~~-----.....|
+ *                            | \             \
+ *                           | /\~~--...__    |
+ *                           (|  `\       __-\|
+ *                           ||    \_   /~    |
+ *                           |)     \~-'      |
+ *                            |      | \      '
+ *                            |      |  \    :
+ *                             \     |  |    |
+ *                              |    )  (    )
+ *                               \  /;  /\  |
+ *                               |    |/   |
+ *                               |    |   |
+ *                                \  .'  ||
+ *                                |  |  | |
+ *                                (  | |  |
+ *                                |   \ \ |
+ *                                || o `.)|
+ *                                |`\\) |
+ *                                |       |
+ *                                |       |
+ * 
+ * @Author       : William
+ * @Date         : 2021-08-21 22:42:33
+ * @LastEditTime : 2021-08-21 23:16:17
+ * @LastEditors  : Do not edit
+ * @FilePath     : /vue_basic/12_列表渲染/8.Vue.set的使用.html
+ * @Description  : 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.set的使用</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>名称:{{name}}</h2>
+        <h2>地址:{{address}}</h2>
+        <hr>
+        <button @click="addSex">添加一个性别</button>
+        <h2>学生姓名:{{student.name}}</h2>
+        <h2 v-if="student.sex">性别：{{student.sex}}</h2>
+        <h2>学生年龄:真实:{{student.age.rAge}},对外{{student.age.sAge}}</h2>
+        <h2>朋友们</h2>
+        <ul>
+            <li v-for="(f, index) in student.friends" :key="index">
+                {{f.name}}--{{f.age}}
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            name: "cib",
+            address: "深圳",
+            student: {
+                name: "jack",
+                age: {
+                    rAge: 40,
+                    sAge: 18
+                },
+                friends: [
+                    { name: "jerry", age: 23 },
+                    { name: "tom", age: 26 }
+                ]
+            }
+        },
+        methods: {
+            addSex() {
+                //Vue.set(this.student, 'sex', '男')
+                this.$set(this.student, 'sex', '男')
+
+            }
+        }
+    })
+</script>
+
+</html>
